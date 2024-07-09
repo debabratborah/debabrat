@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <form action="/recommend" method="post">
+        <label for="movie_name">Enter a Movie Name:</label>
+        <input type="text" id="movie_name" name="movie_name" required>
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if recommendations %}
+        <h2>Recommendations for "{{ movie_name }}"</h2>
+        <ul>
+            {% for movie in recommendations %}
+                <li>{{ movie }}</li>
+            {% endfor %}
+        </ul>
+    {% elif movie_name == "No movie found" %}
+        <h2>No recommendations found for "{{ movie_name }}"</h2>
+    {% endif %}
+</body>
+</html>
